@@ -19,7 +19,7 @@ export async function pintarCardsFuncionarios(resp) {
         let funcionarioItem = `
         <div class="funcionario__item" data-categoria="${Categoria}" data-id="${IdFuncionario}">
             <div class="contenedor__img">
-                <img src="/LaGobernacion/DirectorioFuncionarios/${LinkFilename}" alt="${NombreFuncionario}" class="img__funcionario">
+                <img src="/NuestraAlcaldia/DirectorioFuncionarios/${LinkFilename}" alt="${NombreFuncionario}" class="img__funcionario">
             </div>
         
             <div class="contenedor__contenido">
@@ -70,9 +70,9 @@ export async function pintarInfoModal(resp) {
         informacionBasicaElement.innerText = InformacionBasica;
         experienciaLaboralElement.innerText = ExperienciaLaboral;
         estudiosFuncionarioElement.innerText = EstudiosFuncionario;
-        imgFuncionarioModal.src = `/LaGobernacion/DirectorioFuncionarios/${LinkFilename}`;
-        EmailFuncionario.href = `mailto:${emailFuncionario}`;
-        TelefonoFuncionario.href = `https://api.whatsapp.com/send/?phone=${telefonoFuncionario}`;
+        imgFuncionarioModal.src = `/NuestraAlcaldia/DirectorioFuncionarios/${LinkFilename}`;
+        EmailFuncionario.innerHTML = `<i class="fa fa-envelope icono-redes"></i> ${emailFuncionario}`;
+        TelefonoFuncionario.innerHTML = `<i class="fa fa-phone icono-redes"></i> ${telefonoFuncionario}`;
     }
 };
 
