@@ -3,7 +3,7 @@ export async function consumirDatosFuncionarios(categoria) {
     const folder = "DirectorioFuncionarios",
         params = ["IdFuncionario", "LinkFilename", "NombreFuncionario", "Categoria", "CargoFuncionario"];
 
-    let ulrFetch = `${location.protocol}//${location.host}/NuestraAlcaldia/_api/web/lists/getbytitle('${folder}')/items?$select=${params}`;
+    let ulrFetch = `${location.protocol}//${location.host}/_api/web/lists/getbytitle('${folder}')/items?$select=${params}`;
 
     if (categoria && categoria != "Todas las categorias") {
         ulrFetch += `&$filter=Categoria eq '${categoria}'`; // Agregar filtro por categoría si se proporciona un valor
@@ -29,7 +29,7 @@ export async function funcionarioFiltradoCategoria(categoria) {
     const folder = "DirectorioFuncionarios",
         params = ["IdFuncionario", "LinkFilename", "NombreFuncionario", "Categoria", "CargoFuncionario"];
 
-    let ulrFetch = `${location.protocol}//${location.host}/NuestraAlcaldia/_api/web/lists/getbytitle('${folder}')/items?$select=${params}`;
+    let ulrFetch = `${location.protocol}//${location.host}/_api/web/lists/getbytitle('${folder}')/items?$select=${params}`;
 
     if(categoria != "Todas las categorias"){
         ulrFetch += `&$filter=Categoria eq '${categoria}'`;
@@ -55,7 +55,7 @@ export async function consultaInfoModal(idFuncionario) {
     const folder = "DirectorioFuncionarios",
         params = ["IdFuncionario", "LinkFilename", "NombreFuncionario", "Categoria", "CargoFuncionario", "InformacionBasica", "ExperienciaLaboral", "EstudiosFuncionario", "emailFuncionario", "telefonoFuncionario"];
 
-    let ulrFetch = `${location.protocol}//${location.host}/NuestraAlcaldia/_api/web/lists/getbytitle('${folder}')/items?$select=${params}&$filter=IdFuncionario eq '${idFuncionario}'`;
+    let ulrFetch = `${location.protocol}//${location.host}/_api/web/lists/getbytitle('${folder}')/items?$select=${params}&$filter=IdFuncionario eq '${idFuncionario}'`;
 
     try {
         let data = await fetch(ulrFetch, {
@@ -76,7 +76,7 @@ export async function consultaInfoModal(idFuncionario) {
 export async function consultaCategoriasSlider() {
     const folder = "DirectorioFuncionarios"
 
-    let ulrFetch = `${location.protocol}//${location.host}/NuestraAlcaldia/_api/web/lists/getbytitle('${folder}')/fields?$filter=EntityPropertyName eq 'Categoria'`;
+    let ulrFetch = `${location.protocol}//${location.host}/_api/web/lists/getbytitle('${folder}')/fields?$filter=EntityPropertyName eq 'Categoria'`;
 
     try {
         let data = await fetch(ulrFetch, {
@@ -109,7 +109,7 @@ export async function consultaBusquedaInput(input) {
     const folder = "DirectorioFuncionarios",
         params = ["IdFuncionario", "LinkFilename", "NombreFuncionario", "Categoria", "CargoFuncionario"];
 
-    let ulrFetch = `${location.protocol}//${location.host}/NuestraAlcaldia/_api/web/lists/getbytitle('${folder}')/items?$select=${params}&$top=2000&$filter=substringof('${input}',NombreFuncionario) or substringof('${input}',CargoFuncionario)`;
+    let ulrFetch = `${location.protocol}//${location.host}/_api/web/lists/getbytitle('${folder}')/items?$select=${params}&$top=2000&$filter=substringof('${input}',NombreFuncionario) or substringof('${input}',CargoFuncionario)`;
 
     try {
         let data = await fetch(ulrFetch, {

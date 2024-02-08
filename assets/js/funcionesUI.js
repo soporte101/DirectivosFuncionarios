@@ -19,36 +19,68 @@ const datosCategorias = await consultaCategoriasSlider();
 await pintarItemsCategoria(datosCategorias);
 abrirModal();
 
-//Slider categorias
-const mySwiperCategorias = new Swiper(".categorias", {
-  breakpoints: {
-      // when window width is >= 320px
-      0: {
-        slidesPerView: 1,
-        spaceBetween: 10,
+//Configuración de colores generales
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        mainColor: "#36c",
+        mainColorHover: "rgb(13, 51, 126)",
+        colorTitulos: "#000",
+        colorFondo: "#fff",
       },
-
-      340: {
-        slidesPerView: 2,
-        spaceBetween: 10,
-      },
-      640: {
-          slidesPerView: 3,
-          spaceBetween: 10,
-      },
-      720: {
-          slidesPerView: 4,
-          spaceBetween: 10,
-      },
-
+    },
   },
+};
 
-  navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+var splide = new Splide( '.splide',{
+  breakpoints: {
+    1920: {
+      perPage: 6,
+      gap    : '.5rem',
+    },
+    1440: {
+      perPage: 5,
+      gap    : '.5rem',
+    },
+    1280: {
+      perPage: 4,
+    },
+    1024: {
+      perPage: 4,
+      gap    : '.5rem',
+    },
+    960: {
+      perPage: 3,
+      gap    : '.5rem',
+    },
+    720: {
+      perPage: 3,
+      gap    : '.5rem',
+    },
+    640: {
+      perPage: 2,
+      gap    : '.5rem',
+    },
+    480: {
+      perPage: 1,
+      gap    : '.5rem',
+    },
+  },
+  perPage: 4,
+  gap: ".5rem",
+  perMove: 1,
+  rewind : true,
+  pagination: false,
+  classes: {
+      arrows: 'splide__arrows',
+      arrow : 'rounded-full',
+      prev  : 'splide__arrow--prev absolute !left-[-2.5rem] scale-x-[1] top-0 min-w-[2.2rem] h-[2.2rem] border-0 flex items-center justify-center bg-gray-300 shadow-sm focus:!outline-none [&>svg]:w-[1rem]',
+      next  : 'splide__arrow--next absolute !right-[-2.5rem] top-0 min-w-[2.2rem] h-[2.2rem] border-0 flex items-center justify-center bg-gray-300 shadow-sm focus:!outline-none [&>svg]:w-[1rem]',
   },
 });
 
+splide.mount();
 
 //Cargar informacion en el modal
 //Funcion modal
@@ -74,6 +106,7 @@ export function abrirModal() {
 
           modal.style.display = "block";
       });
+      
   });
 
   // Evento al hacer clic en el botón para cerrar la ventana modal
